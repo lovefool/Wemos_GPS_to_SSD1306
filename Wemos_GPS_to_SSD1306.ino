@@ -10,16 +10,17 @@
 // Software Serial for GPS
 int RXPin = 2; //D4
 int TXPin = 16; //D0
-
 int GPSBaud = 9600; 
 
-const int lebar=128;
-const int tinggi=64;
-const int reset=-1;
-
-Adafruit_SSD1306 oled(lebar,tinggi,&Wire,reset);
 TinyGPSPlus gps;
 SoftwareSerial gpsSerial(RXPin, TXPin);
+
+#define SCREEN_WIDTH 128 // OLED display width, in pixels
+#define SCREEN_HEIGHT 64 // OLED display height, in pixels
+#define OLED_RESET     -1 // Reset pin # (or -1 if sharing Arduino reset pin)
+#define SCREEN_ADDRESS 0x3C ///< See datasheet for Address; 0x3D for 128x64, 0x3C for 128x32
+
+Adafruit_SSD1306 oled(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 
 void setup()
 {
